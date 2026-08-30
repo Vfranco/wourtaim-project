@@ -1,0 +1,78 @@
+#!/usr/bin/env sh
+#
+# Valida el mensaje de commit contra la convención del README.
+#   tipo(alcance): descripción
+#
+# Se salta merges, reverts y fixups.
+
+subject=$(head -n 1 "$1")
+tipos="feat|fix|refactor|test|style|docs|chore"
+
+case "$subject" in
+  "Merge "*|"Revert "*|fixup!*|squash!*) exit 0 ;;
+esac
+
+rechazar() {
+  echo ""
+  echo "  Commit rechazado: $1"
+  echo ""
+  echo "  Tu mensaje:  $subject"
+  echo ""
+  echo "  Formato:     tipo(alcance): descripción"
+  echo "  Tipos:       feat  fix  refactor  test  style  docs  chore"
+  echo "  El alcance es opcional; si lo pones, que sea el módulo, no el archivo."
+  echo ""
+  echo "  Ejemplos:"
+  echo "    feat(horas): registrar horas por proyecto y día"
+  echo "    fix(periodo): impedir registros en periodo cerrado"
+  echo "    test(horas): casos borde del límite diario"
+  echo "    chore: configurar vitest"
+  echo ""
+  echo "  Convención completa: README.md → Mensajes de commit"
+  echo ""
+  exit 1
+}
+
+# 1. Estructura
+if ! printf '%s' "$subject" | grep -qE "^($tipos)(\([a-z0-9-]+\))?!?: .+"; then
+  if printf '%s' "$subject" | grep -qE "^($tipos)(\\([a-z0-9-]+\\))?!?: *$"; then
+    rechazar "falta la descripción"
+  fi
+  case "$subject" in
+    *:*) rechazar "el tipo no es válido, o el alcance lleva mayúsculas o espacios" ;;
+    *)   rechazar "falta el 'tipo:' al principio" ;;
+  esac
+fi
+
+descripcion=${subject#*: }
+primera=${descripcion%% *}
+
+# 2. Mensajes que no dicen nada
+case "$(printf '%s' "$descripcion" | tr '[:upper:]' '[:lower:]')" in
+  wip|arreglos|cambios|"cambios varios"|"ya quedo"|"ya quedó"|correcciones|ajustes|update|updates)
+    rechazar "'$descripcion' no es un mensaje. Di qué cambió."
+    ;;
+esac
+
+# 3. Minúscula inicial
+case "$descripcion" in
+  [[:upper:]]*) rechazar "la descripción empieza en mayúscula" ;;
+esac
+
+# 4. Sin punto final
+case "$descripcion" in
+  *.) rechazar "la descripción termina en punto" ;;
+esac
+
+# 5. Presente e imperativo (heurística sobre la primera palabra, en español)
+if printf '%s' "$primera" | grep -qE "(ado|ados|ada|adas|ido|idos|ida|idas|ando|endo|é|í|ó)$"; then
+  rechazar "'$primera' no está en presente e imperativo. Escribe 'agregar', no 'agregado' ni 'agregué'."
+fi
+
+# 6. Aviso, no bloqueo
+if [ ${#subject} -gt 72 ]; then
+  echo "  Aviso: el asunto tiene ${#subject} caracteres. Por debajo de 72 se lee mejor."
+  echo "  Si el porqué no cabe, va en el cuerpo del commit."
+fi
+
+exit 0
