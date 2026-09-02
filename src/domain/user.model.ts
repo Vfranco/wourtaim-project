@@ -1,5 +1,8 @@
+import type { UserId } from './shared/ids';
+
 interface User {
-  name: string;
+  id: UserId;
   email: string;
-  password: string;
+  passwordHash: string;
+  role: 'admin' | 'user';
 }
