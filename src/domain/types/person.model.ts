@@ -1,6 +1,6 @@
 import type { PersonId } from "../shared/ids";
 
-interface Person {
+export interface Person {
   id: PersonId;
   name: string;
   active: boolean;

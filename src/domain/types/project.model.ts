@@ -1,8 +1,8 @@
 import type { ProjectId } from '../shared/ids';
 
-type ProjectStatus = 'open' | 'closed';
+export type ProjectStatus = 'open' | 'closed';
 
-interface Project {
+export interface Project {
   id: ProjectId;
   name: string;
   status: ProjectStatus;

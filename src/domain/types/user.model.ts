@@ -1,6 +1,6 @@
 import type { UserId } from '../shared/ids';
 
-interface User {
+export interface User {
   id: UserId;
   email: string;
   passwordHash: string;
