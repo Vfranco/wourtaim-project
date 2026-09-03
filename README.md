@@ -216,6 +216,15 @@ npm install
 npm run dev
 ```
 
-Pruebas: `npm test`
+### Scripts disponibles
+
+| Comando | Que Hace |
+|---|---|
+| `npm run dev` | Levanta Vite en modo desarrollo. |
+| `npm run build` | Compila los tipos con `tsc` y luego genera el build de producción. |
+| `npm run preview` | Sirve localmente el resultado de `build`. |
+| `npm test` | Ejecuta Vitest en modo observador: se queda corriendo y vuelve a probar al guardar. |
+| `npm run test:run` | Ejecuta las pruebas una sola vez y termina con código de salida. |
+| `npm run prepare` | Lo ejecuta npm automáticamente después de `npm install`. Instala los hooks de Git de Husky; no se invoca a mano. |
 
 El repo arranca prácticamente vacío. Antes de escribir código, el equipo acuerda la estructura del proyecto.
