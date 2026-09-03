@@ -1,4 +1,4 @@
-import type { PersonId } from "./shared/ids";
+import type { PersonId } from "../shared/ids";
 
 interface Person {
   id: PersonId;

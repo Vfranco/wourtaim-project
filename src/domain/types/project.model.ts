@@ -1,4 +1,4 @@
-import type { ProjectId } from './shared/ids';
+import type { ProjectId } from '../shared/ids';
 
 type ProjectStatus = 'open' | 'closed';
 
