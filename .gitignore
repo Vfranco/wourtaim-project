@@ -18,3 +18,4 @@ TICKETS.md
 !.vscode/extensions.json
 
 npm-debug.log*
+package-look.json
