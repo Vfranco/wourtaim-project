@@ -1,8 +1,9 @@
-import type { UserId } from '../shared/ids';
+import {Person} from "./person.model";
 
 export interface User {
-  id: UserId;
+  id: string;
   email: string;
   passwordHash: string;
+  employee: Person;
   role: 'admin' | 'user';
 }
