@@ -1,7 +1,7 @@
 import {GeneralStatusOptions} from "../enums/general-status.enum";
 
 export interface Project {
-  id: number;
+  id: string;
   name: string;
   status: GeneralStatusOptions;
   description: string;
