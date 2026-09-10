@@ -4,12 +4,223 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wourtaim</title>
+    <title>Wourtaim - Iniciar sesión</title>
+    <link rel="stylesheet " href="./src/output.css">
 </head>
 
-<body>
-    <div id="app"></div>
+<body class="min-h-screen bg-[#080A0D] text-white">
+    
+    <main class="min-h-screen flex flex-col items-center justify-center px-4">
+
+        
+        <div class="text-center mb-8">
+        <div class="mx-auto mb-4">
+            <span class="text-6xl text-orange-500">◷</span>
+        </div>
+        <h1 class="text-3xl font-bold">WUORTAIM</h1>
+        <P class="text-gray-400 mt-2">Control de horas de equipo</P>
+        </div>
+
+        <section class="w-full max-w-md bg-[#111418] border border-gray-800 rounded-2xl p-8 shadow-lg">
+            <div class="text-center mb-8">
+                <h2 class="text-center mb-8">Iniciar sensión</h2>
+                <p class="text-gray-400 mt-2">Ingresa tus credenciales para acceder</p>
+            </div>
+
+            <form id="loginForm" autocomplete="off">
+
+            <div class="mb-5">
+                <label for="usuario" class="block text-sm font-medium mb-2">Usuario</label>
+
+                <div class="relative">
+                <svg class="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.5 20.25a7.5 7.5 0 0115 0"/>
+                </svg>
+
+                <input type="text" id="usuario" name="campo_usuario_login"
+                placeholder="Ingresa tu usuario" autocorrect="off" autocapitalize="off"
+                spellcheck="false" required
+                class="w-full bg-[#080A0D] border border-gray-700 rounded-lg pl-10 pr-4 py-3 text-white outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-500"> 
+            </div>
+            </div>
+
+        <div class="mb-5">
+            <label for="password" class="block text-sm font-medium mb-2">Contraseña</label>
+
+            <div class="relative">
+
+            <svg class="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 0h10.5a1.5 1.5 0 011.5 1.5v7.5a1.5 1.5 0 01-1.5 1.5H6.75a1.5 1.5 0 01-1.5-1.5v-7.5a1.5 1.5 0 011.5-1.5z"/>
+            </svg>
+
+            <input  type="password"
+                    id="password"
+                    name="campo_clave_login"
+                    placeholder="Ingresa tu contraseña"
+                    autocomplete="new-password"
+                    autocorrect="off"
+                    autocapitalize="off"
+                    spellcheck="false"
+                    required
+                    class="w-full bg-[#080A0D] border border-gray-700 rounded-lg pl-10 pr-10 py-3 text-white outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-500">
+
+                    <button type="button" id="btnVerPassword" class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-300">
+                            <svg id="iconoOjo" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                            </svg>
+                        </button>
+            </div>
+        </div>
+
+        <div class="flex items-center justify-between mb-6">
+            <div class="flex items-center">
+                <input type="checkbox" id="recordarme" class="w-4 h-4 accent-orange-500">
+                <label for="recordarme" class="ml-2 text-sm text-gray-300">Recordarme</label>
+            </div>
+
+            <a href="recuperar.html" class="text-sm text-orange-500 hover:text-orange-400">¿Olvidaste tu contraseña?</a>
+        </div>
+
+        <p id="mensajeError" class="hidden text-red-500 text-sm text-center mb-4">Usuario o contraseña incorrectos.</p>
+
+        <button type="submit" class="w-full bg-orange-500 hover:bg-orange-600 text-black font-bold py-3 rounded-lg transition">Iniciar sesión</button>
+        
+            </form>
+
+        </section>
+
+        <div class="mt-6 text-center">
+            <p class="text-gray-400">¿No tienes una cuenta?
+                <a href="#" class="text-orange-500 hover:text-orange-400 font-semibold ml-1">Registrate aqui</a>
+            </p>
+        </div>
+
+    </main>
+
+    <main class="min-h-screen flex flex-col items-center justify-center px-4">
+
+        <div class="text-center mb-8">
+            <div class="mx-auto mb-4">
+                <span class="text-6xl text-orange-500">◷</span>
+            </div>
+            <h1 class="text-3xl font-bold">WUORTAIM</h1>
+            <p class="text-gray-400 mt-2">Control de horas de equipo</p>
+        </div>
+
+        <section class="w-full max-w-md bg-[#111418] border border-gray-800 rounded-2xl p-8 shadow-lg">
+
+            <div class="text-center mb-8">
+                <h2 class="text-2xl font-bold">Crear cuenta</h2>
+                <p class="text-gray-400 mt-2">Completa los datos para registrarte</p>
+            </div>
+
+            <form id="registroForm" autocomplete="off">
+
+                <div class="mb-5">
+                    <label for="usuario" class="block text-sm font-medium mb-2">Usuario</label>
+
+                    <div class="relative">
+
+                        <svg class="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.5 20.25a7.5 7.5 0 0115 0"/>
+                        </svg>
+
+                        <input
+                        type="text"
+                            id="usuario"
+                            name="campo_usuario_registro"
+                            placeholder="Crea tu nombre de usuario"
+                            autocomplete="off"
+                            autocorrect="off"
+                            autocapitalize="off"
+                            spellcheck="false"
+                            required
+                            class="w-full bg-[#080A0D] border border-gray-700 rounded-lg pl-10 pr-4 py-3 text-white outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-500">
+                    </div>
+                </div>
+
+
+                <div class="mb-5">
+                    <label for="password" class="block text-sm font-medium mb-2">Contraseña</label>
+
+                    <div class="relative">
+
+                        <svg class="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 0h10.5a1.5 1.5 0 011.5 1.5v7.5a1.5 1.5 0 01-1.5 1.5H6.75a1.5 1.5 0 01-1.5-1.5v-7.5a1.5 1.5 0 011.5-1.5z"/>
+                        </svg>
+
+                        <input
+                            type="password"
+                            id="password"
+                            name="campo_clave_registro"
+                            placeholder="Crea una contraseña"
+                            autocomplete="new-password"
+                            autocorrect="off"
+                            autocapitalize="off"
+                            spellcheck="false"
+                            required
+                            class="w-full bg-[#080A0D] border border-gray-700 rounded-lg pl-10 pr-10 py-3 text-white outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-500">
+
+                            <button type="button" id="btnVerPassword" class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-300">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="mb-6">
+                    <label for="confirmarPassword" class="block text-sm font-medium mb-2">Confirmar contraseña</label>
+
+                    <div class="relative">
+
+                        <svg class="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 0h10.5a1.5 1.5 0 011.5 1.5v7.5a1.5 1.5 0 01-1.5 1.5H6.75a1.5 1.5 0 01-1.5-1.5v-7.5a1.5 1.5 0 011.5-1.5z"/>
+                        </svg>
+
+                        <input
+                            type="password"
+                            id="confirmarPassword"
+                            name="campo_confirmar_registro"
+                            placeholder="Confirma tu contraseña"
+                            autocomplete="new-password"
+                            autocorrect="off"
+                            autocapitalize="off"
+                            spellcheck="false"
+                            required
+                            class="w-full bg-[#080A0D] border border-gray-700 rounded-lg pl-10 pr-10 py-3 text-white outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-500">
+
+                            <button type="button" id="btnVerConfirmarPassword" class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-300">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <p id="mensajeError" class="hidden text-red-500 text-sm text-center mb-4">
+                    Las contraseñas no coinciden.
+                </p>
+
+                <button type="submit" class="w-full bg-orange-500 hover:bg-orange-600 text-black font-bold py-3 rounded-lg transition">
+                    Crear cuenta
+                </button>
+            
+            </form>
+        </section>
+
+        <div class="mt-6 text-center">
+            <p class="text-gray-400">
+                ¿Ya tienes una cuenta?
+                <a href="#" class="text-orange-500 hover:text-orange-400 font-semibold ml-1">Inicia sesión</a>
+            </p>
+        </div>
+
+    </main>
+    
     <script type="module" src="/src/main.ts"></script>
 </body>
-
 </html>
