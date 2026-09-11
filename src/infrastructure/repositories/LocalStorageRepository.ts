@@ -10,10 +10,10 @@ export class LocalStorageRepository<T extends { id: string }> implements IReposi
         try {
             const parsedData: unknown = JSON.parse(data);
             if (!Array.isArray(parsedData)) return [];
-            const validItem = parsedData.every(
+            const filteredData = parsedData.filter(
                 (item) => typeof item === "object" && item !== null && "id" in item && typeof (item as { id: unknown }).id === "string"
             );
-            return validItem ? (parsedData as T[]) : [];
+            return filteredData;
         } catch {
             return [];
         }
