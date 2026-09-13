@@ -1,7 +1,6 @@
 export interface IRepository<T> {
     create(payload: T): boolean;
-    remove(id: string): boolean;
+    read(): T[];
     update(id: string, payload: T): boolean;
-    readAll(): T[];
-    getById(id: string): T | null;
+    delete(id: string): boolean;
 }
