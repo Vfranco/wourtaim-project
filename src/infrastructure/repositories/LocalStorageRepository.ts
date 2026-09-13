@@ -1,7 +1,7 @@
 import type { IRepository } from "@/domain/interfaces/IRepository";
 
 export class LocalStorageRepository<T extends { id: string }> implements IRepository<T> {
-    constructor(private readonly storageKey: string) { }
+    constructor(private readonly storageKey: string) {}
 
     private readStorage(): T[] {
         const data = localStorage.getItem(this.storageKey);
@@ -34,16 +34,8 @@ export class LocalStorageRepository<T extends { id: string }> implements IReposi
         }
     }
 
-    remove(id: string): boolean {
-        try {
-            const data = this.readStorage();
-            const updatedData = data.filter((item) => item.id !== id);
-            if (updatedData.length === data.length) return false;
-            this.writeStorage(updatedData);
-            return true;
-        } catch (error) {
-            throw new Error(`Failed to remove item with id ${id}: ${(error as Error).message}`);
-        }
+    read(): T[] {
+        return this.readStorage();
     }
 
     update(id: string, payload: T): boolean {
@@ -59,12 +51,15 @@ export class LocalStorageRepository<T extends { id: string }> implements IReposi
         }
     }
 
-    readAll(): T[] {
-        return this.readStorage();
-    }
-
-    getById(id: string): T | null {
-        const data = this.readStorage();
-        return data.find((item) => item.id === id) ?? null;
+    delete(id: string): boolean {
+        try {
+            const data = this.readStorage();
+            const updatedData = data.filter((item) => item.id !== id);
+            if (updatedData.length === data.length) return false;
+            this.writeStorage(updatedData);
+            return true;
+        } catch (error) {
+            throw new Error(`Failed to remove item with id ${id}: ${(error as Error).message}`);
+        }
     }
 }
