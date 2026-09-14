@@ -1,7 +1,7 @@
 import type { IRepository } from "@/domain/interfaces/IRepository";
 
 export class LocalStorageRepository<T extends { id: string }> implements IRepository<T> {
-    constructor(private readonly storageKey: string) {}
+    constructor(private readonly storageKey: string) { }
 
     private readStorage(): T[] {
         const data = localStorage.getItem(this.storageKey);
@@ -9,12 +9,16 @@ export class LocalStorageRepository<T extends { id: string }> implements IReposi
 
         try {
             const parsedData: unknown = JSON.parse(data);
-            if (!Array.isArray(parsedData)) return [];
+            if (!Array.isArray(parsedData)) {
+                console.error(`Data in "${this.storageKey}" is not an array:`, parsedData);
+                return [];
+            }
             const filteredData = parsedData.filter(
                 (item) => typeof item === "object" && item !== null && "id" in item && typeof (item as { id: unknown }).id === "string"
             );
             return filteredData;
-        } catch {
+        } catch (error) {
+            console.error(`Error parsing local storage data for key ${this.storageKey}:`, error);
             return [];
         }
     }
