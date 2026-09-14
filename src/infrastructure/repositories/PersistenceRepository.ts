@@ -1,10 +1,11 @@
 import type { IRepository } from "@/domain/interfaces/IRepository";
+import type { IStorage } from "@/domain/interfaces/IStorage";
 
-export class LocalStorageRepository<T extends { id: string }> implements IRepository<T> {
-    constructor(private readonly storageKey: string) { }
+export class PersistenceRepository<T extends { id: string }> implements IRepository<T> {
+    constructor(private readonly storageKey: string, private readonly storage: IStorage) { }
 
     private readStorage(): T[] {
-        const data = localStorage.getItem(this.storageKey);
+        const data = this.storage.get(this.storageKey);
         if (!data) return [];
 
         try {
@@ -24,7 +25,7 @@ export class LocalStorageRepository<T extends { id: string }> implements IReposi
     }
 
     private writeStorage(data: T[]): void {
-        localStorage.setItem(this.storageKey, JSON.stringify(data));
+        this.storage.set(this.storageKey, JSON.stringify(data));
     }
 
     create(payload: T): boolean {
