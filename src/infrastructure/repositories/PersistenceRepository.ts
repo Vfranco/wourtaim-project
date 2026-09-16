@@ -11,15 +11,13 @@ export class PersistenceRepository<T extends { id: string }> implements IReposit
         try {
             const parsedData: unknown = JSON.parse(data);
             if (!Array.isArray(parsedData)) {
-                console.error(`Data in "${this.storageKey}" is not an array:`, parsedData);
                 return [];
             }
             const filteredData = parsedData.filter(
                 (item) => typeof item === "object" && item !== null && "id" in item && typeof (item as { id: unknown }).id === "string"
             );
             return filteredData;
-        } catch (error) {
-            console.error(`Error parsing local storage data for key ${this.storageKey}:`, error);
+        } catch {
             return [];
         }
     }
